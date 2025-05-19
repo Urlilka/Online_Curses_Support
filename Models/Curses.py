@@ -1,6 +1,6 @@
 from Models.Base import Base
 from peewee import PrimaryKeyField, CharField
 
-class Roles(Base):
+class Curses(Base):
     id = PrimaryKeyField()
-    role = CharField(max_length=8)
+    curs = CharField(max_length=122)
