@@ -2,6 +2,7 @@ from Models.Users import *
 from bcrypt import hashpw, gensalt, checkpw
 
 class User_Controller:
+
     # Регистрация пользователя (В role_id == 1 --- Admin, 2 --- Student)
     @classmethod
     def registration(cls, username, password, firstname, surname, role_id):
