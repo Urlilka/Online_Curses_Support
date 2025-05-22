@@ -12,3 +12,11 @@ class User_curs_Controllers():
     @classmethod
     def get_student_curs(cls, user_id):
         return Curses.select().join(Curses_Users).where(Curses_Users.user_id == user_id)
+
+    # Добавление пользователя к курсу
+    @classmethod
+    def add_student_to_curs(cls, user_id, curs_id):
+        Curses_Users.create(
+            user_id = user_id,
+            curs_id = curs_id
+        )

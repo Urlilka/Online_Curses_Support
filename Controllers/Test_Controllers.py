@@ -17,7 +17,7 @@ class Test_Controllers():
     def update_test(cls, id, new_link):
         Tests.update(test_link = new_link).where(Tests.id == id).execute()
 
-    # Удаление Видео
+    # Удаление Теста
     @classmethod
     def delete_test(cls, id):
         Tests.delete().where(Tests.id == id).execute()

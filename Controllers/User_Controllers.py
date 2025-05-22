@@ -44,3 +44,8 @@ class User_Controller:
     @classmethod
     def show(cls, id):
         return Users.get_or_none(id)
+
+    # Вывод одного пользователя по логину
+    @classmethod
+    def show_login(cls,login):
+        return Users.get_or_none(Users.username == login)

@@ -1,3 +1,4 @@
+from flask_login import UserMixin
 from Connection.Connect import connect
 from Models.Base import Base
 from peewee import PrimaryKeyField, ForeignKeyField, CharField
@@ -10,7 +11,7 @@ from Models.Videos import Videos
 
 
 
-class Users(Base):
+class Users(UserMixin,Base):
     id = PrimaryKeyField()
     username = CharField(max_length=15)
     password = CharField(max_length=30)
