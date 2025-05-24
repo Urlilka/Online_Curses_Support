@@ -16,15 +16,15 @@ class User_Controller:
     def auth(cls,username, password):
         # проверяем логин. В случае успеха проверяем пароль
         if Users.get_or_none(Users.username == username) != None:
-            hash_password = Users.get_or_none(Users.username == username).password
-            if checkpw(password.encode("utf-8"), hash_password.encode("utf-8")):
+            hspassword = Users.get_or_none(Users.username == username).password
+            if checkpw(password.encode('utf-8'),hspassword.encode('utf-8')):
                 return True
         return False
 
     # Вывод записей из таблицы
     @classmethod
     def get(cls):
-        return Users.select().order_by(Users.username.asc())
+        return Users.select()
 
     # Удалить
     @classmethod
@@ -49,3 +49,13 @@ class User_Controller:
     @classmethod
     def show_login(cls,login):
         return Users.get_or_none(Users.username == login)
+
+if __name__ == "__main__":
+    # User_Controller.registration("student","student","student_name","student_surname",2)
+
+    print(User_Controller.auth("student","student"))
+
+    for i in User_Controller.get():
+        print(i.id,i.username,i.password,i.firstname,i.surname,i.role_id.role)
+
+    # print(Users.get_or_none(Users.username == "admin").password)

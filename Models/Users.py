@@ -8,13 +8,14 @@ from Models.Certificates import Certificates
 from Models.Curses import Curses
 from Models.Tests import Tests
 from Models.Videos import Videos
+from flask_login import UserMixin
 
 
 
 class Users(UserMixin,Base):
     id = PrimaryKeyField()
     username = CharField(max_length=15)
-    password = CharField(max_length=30)
+    password = CharField(max_length=255)
     firstname = CharField(max_length=25)
     surname = CharField(max_length=25)
     role_id = ForeignKeyField(Roles)
