@@ -2,6 +2,37 @@
 
 {% block content %}
 
-<h1>TEST!</h1>
+<div class="row bg-success bg-gradient p-4 m-auto text-white">
+    <div class="col bg-header-admin m-auto">Панель Студента</div>
+    <div class="col justify-content-end d-flex m-auto">
+        <a href="#" class="bg-danger bg-gradient py-2 px-3 border border-danger rounded link-dark link-underline-opacity-0">Выход</a>
+    </div>
+</div>
+
+<div class="container text-center align-items-center py-5">
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Ссылки на тесты</th>
+                    <th scope="col">Ссылки на видео</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="#">Видео _---_</a></td>
+                    <td><a href="#">Тест _---_</a></td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+    <!--  Прогресс бар завершения курса  -->
+    <div class="progress bg-dark-subtle row" role="progressbar">
+        <div class="progress-bar bg-info progress-bar-striped progress-bar-animated text-dark" style="width: 10%">10%</div>
+    </div>
+
+</div>
 
 {% endblock %}
