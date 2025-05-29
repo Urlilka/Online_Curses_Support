@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Верхняя панель -->
+<div class="row bg-success bg-gradient p-4 m-auto text-white">
+
+    <!-- Заголовок панели -->
+    <div class="col bg-header-admin m-auto fs-3 fw-semibold">
+        Панель Сертификатов
+    </div>
+
+    <!-- Кнопка Назад -->
+    <button type="button" class="btn btn-lg btn-danger col-auto justify-content-end">
+        <a href="/student_panel" class="link-light link-underline-opacity-0">Назад</a>
+    </button>
+</div>
+
+<!-- Основной экран -->
+<div class="container text-center align-items-center py-5">
+    <div class="row">
+
+        <!-- Таблица с ссылками на Сертификаты пользователя -->
+        <table class="table table-secondary table-hover">
+            <thead>
+                <tr class="table-secondary">
+                    <th class="table-secondary" scope="col">Сертификаты</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <tr class="table-secondary">
+                    <td class="table-secondary">
+                        <a href="#">Шаблон</a>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+{% endblock %}

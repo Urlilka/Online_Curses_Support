@@ -2,26 +2,50 @@
 
 {% block content %}
 
+<!-- Верхняя панель -->
 <div class="row bg-success bg-gradient p-4 m-auto text-white">
-    <div class="col bg-header-admin m-auto">Панель Студента</div>
-    <div class="col justify-content-end d-flex m-auto">
-        <a href="#" class="bg-danger bg-gradient py-2 px-3 border border-danger rounded link-dark link-underline-opacity-0">Выход</a>
+
+    <!-- Заголовок панели -->
+    <div class="col bg-header-admin m-auto fs-3 fw-semibold">Панель Студента</div>
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- Группа кнопок -->
+    <div class="btn-group col-auto me-5" role="group">
+
+        <!-- Кнопка "Сертификаты" -->
+        <button type="button" class="btn btn-warning">
+            <a href="/student_panel/certifications" class="link-dark link-underline-opacity-0">Сертификаты</a>
+        </button>
+
+        <!-- Кнопка "Рекомендации" -->
+        <button type="button" class="btn btn-warning">
+            <a href="/student_panel/recomendations" class="link-dark link-underline-opacity-0">Рекомендации</a>
+        </button>
     </div>
+    <!-- --------------------------------------------------------------------- -->
+
+    <!-- Кнопка Выхода -->
+    <button type="button" class="btn btn-lg btn-danger col-auto justify-content-end">
+        <a href="/logout" class="link-light link-underline-opacity-0">Выход</a>
+    </button>
 </div>
 
+<!-- Основной экран -->
 <div class="container text-center align-items-center py-5">
     <div class="row">
-        <table class="table">
+
+        <!-- Таблица с Ссылками на тесты и видео -->
+        <table class="table table-secondary table-hover">
             <thead>
-                <tr>
-                    <th scope="col">Ссылки на тесты</th>
-                    <th scope="col">Ссылки на видео</th>
+                <tr class="table-secondary">
+                    <th class="table-secondary" scope="col">Ссылки на тесты</th>
+                    <th class="table-secondary" scope="col">Ссылки на видео</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td><a href="#">Видео _---_</a></td>
-                    <td><a href="#">Тест _---_</a></td>
+            <tbody class="table-group-divider">
+                <tr class="table-secondary">
+                    <td class="table-secondary"><a href="#">Видео _---_</a></td>
+                    <td class="table-secondary"><a href="#">Тест _---_</a></td>
                 </tr>
             </tbody>
 
@@ -29,8 +53,8 @@
     </div>
 
     <!--  Прогресс бар завершения курса  -->
-    <div class="progress bg-dark-subtle row" role="progressbar">
-        <div class="progress-bar bg-info progress-bar-striped progress-bar-animated text-dark" style="width: 10%">10%</div>
+    <div class="progress bg-dark-subtle row" style="height: 20px" role="progressbar">
+        <div class="progress-bar bg-info progress-bar-striped progress-bar-animated text-black fw-semibold" style="width: 10%">10%</div>
     </div>
 
 </div>
