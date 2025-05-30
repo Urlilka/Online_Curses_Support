@@ -21,3 +21,6 @@ class Certificate_Controllers():
     @classmethod
     def delete_test(cls, id):
         Certificates.delete().where(Certificates.id == id).execute()
+
+if __name__ == "__main__":
+    Certificate_Controllers.add_certificate("https://google.com")

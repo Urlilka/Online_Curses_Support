@@ -21,3 +21,6 @@ class Test_Controllers():
     @classmethod
     def delete_test(cls, id):
         Tests.delete().where(Tests.id == id).execute()
+
+if __name__ =="__main__":
+    Test_Controllers.add_test("https://www.xn----8sbaqd1aje6bf1c2g.xn--p1ai/")

@@ -21,3 +21,6 @@ class Video_Controllers():
     @classmethod
     def delete_video(cls, id):
         Videos.delete().where(Videos.id == id).execute()
+
+if __name__ == "__main__":
+    Video_Controllers.add_video("https://yandex.ru")

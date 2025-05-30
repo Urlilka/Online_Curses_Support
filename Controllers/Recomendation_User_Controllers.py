@@ -16,3 +16,7 @@ class Recomendation_User_Controllers():
     @classmethod
     def delete_recomendation_to_user(cls, id):
         Recomendations_Users.delete().where(Recomendations_Users.id == id).execute()
+
+
+if __name__ == "__main__":
+    Recomendation_User_Controllers.add_recomendation_to_user(1,7)

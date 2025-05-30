@@ -20,3 +20,8 @@ class User_curs_Controllers():
             user_id = user_id,
             curs_id = curs_id
         )
+
+if __name__ == "__main__":
+    # User_curs_Controllers.add_student_to_curs(7,1)
+    for row in User_curs_Controllers.get_student_curs(7):
+        print(row.curs, row.id)

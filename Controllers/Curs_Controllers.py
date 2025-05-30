@@ -26,3 +26,6 @@ class Curs_Controllers:
     @classmethod
     def delete_curs(cls, id):
         Curses.delete().where(Curses.id == id).execute()
+
+if __name__ == "__main__":
+    Curs_Controllers.add_curs("Test Curs")

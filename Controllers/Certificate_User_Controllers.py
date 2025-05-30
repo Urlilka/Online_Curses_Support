@@ -16,3 +16,6 @@ class Certificate_User_Controllers():
     @classmethod
     def delete_certificate_to_user(cls, id):
         Certificates_Users.delete().where(Certificates_Users.id == id).execute()
+
+if __name__ == "__main__":
+    Certificate_User_Controllers.add_certificate_to_user(1,7)
