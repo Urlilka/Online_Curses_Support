@@ -21,7 +21,14 @@ class User_curs_Controllers():
             curs_id = curs_id
         )
 
+    # Из user_id получить данные таблицы Curses_Users Конкретного пользователя User
+    @classmethod
+    def get_curs_from_user(cls, user_id):
+        return Curses_Users.get_or_none(Curses_Users.user_id == user_id)
+
 if __name__ == "__main__":
     # User_curs_Controllers.add_student_to_curs(7,1)
-    for row in User_curs_Controllers.get_student_curs(7):
-        print(row.curs, row.id)
+    # for row in User_curs_Controllers.get_student_curs(7):
+    #     print(row.curs, row.id)
+
+    print(User_curs_Controllers.get_curs_from_user(7).curs_id.curs)

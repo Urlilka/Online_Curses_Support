@@ -6,54 +6,66 @@
 <div class="row bg-success bg-gradient p-4 m-auto text-white">
 
     <!-- Заголовок панели -->
-    <div class="col bg-header-admin m-auto fs-3 fw-semibold">Панель Студента</div>
+    <div class="col bg-header-admin m-auto fs-3 fw-semibold">Панель Студента. Группа {{ group }}</div>
 
     <!-- --------------------------------------------------------------------- -->
     <!-- Группа кнопок -->
-    <div class="btn-group col-auto me-5" role="group">
+    <div class="btn-group py-auto my-auto col-auto me-5">
 
         <!-- Кнопка "Сертификаты" -->
-        <button type="button" class="btn btn-warning">
-            <a href="/student_panel/certifications" class="link-dark link-underline-opacity-0">Сертификаты</a>
-        </button>
+        <a href="/student_panel/certifications" class="link-dark link-underline-opacity-0 btn btn-warning">Сертификаты</a>
 
         <!-- Кнопка "Рекомендации" -->
-        <button type="button" class="btn btn-warning">
-            <a href="/student_panel/recomendations" class="link-dark link-underline-opacity-0">Рекомендации</a>
-        </button>
+        <a href="/student_panel/recomendations" class="link-dark link-underline-opacity-0 btn btn-warning">Рекомендации</a>
     </div>
     <!-- --------------------------------------------------------------------- -->
 
     <!-- Кнопка Выхода -->
-    <button type="button" class="btn btn-lg btn-danger col-auto justify-content-end">
-        <a href="/logout" class="link-light link-underline-opacity-0">Выход</a>
-    </button>
+    <a href="/logout" class="link-light link-underline-opacity-0 btn btn-lg btn-danger col-auto justify-content-end">Выход</a>
 </div>
 
 <!-- Основной экран -->
 <div class="container text-center align-items-center py-5">
     <div class="row">
-
-        <!-- Таблица с Ссылками на тесты и видео -->
-        <table class="table table-secondary table-hover">
-            <thead>
-                <tr class="table-secondary">
-                    <th class="table-secondary" scope="col">Ссылки на тесты</th>
-                    <th class="table-secondary" scope="col">Ссылки на видео</th>
-                </tr>
-            </thead>
-            <tbody class="table-group-divider">
-                <tr class="table-secondary">
-                    <td class="table-secondary"><a href="#">Видео _---_</a></td>
-                    <td class="table-secondary"><a href="#">Тест _---_</a></td>
-                </tr>
-            </tbody>
-
-        </table>
+        <div class="col">
+        <!-- Таблица с Ссылками на видео -->
+            <table class="table table-secondary table-hover">
+                <thead>
+                    <tr class="table-secondary">
+                        <th class="table-secondary" scope="col">Ссылки на видео</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                {% for videos in video %}
+                    <tr class="table-secondary">
+                        <td class="table-secondary"><a href="{{videos.video_id.video_link}}">Видео № {{loop.index}}</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col">
+        <!-- Таблица с Ссылками на тесты -->
+            <table class="table table-secondary table-hover">
+                <thead>
+                    <tr class="table-secondary">
+                        <th class="table-secondary" scope="col">Ссылки на тесты</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                {% for tests in test %}
+                    <tr class="table-secondary">
+                        <td class="table-secondary"><a href="{{tests.test_id.test_link}}">Тест № {{loop.index}}</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 
+
     <!--  Прогресс бар завершения курса  -->
-    <div class="progress bg-dark-subtle row" style="height: 20px" role="progressbar">
+    <div class="progress bg-dark-subtle row-auto" style="height: 20px" role="progressbar">
         <div class="progress-bar bg-info progress-bar-striped progress-bar-animated text-black fw-semibold" style="width: 10%">10%</div>
     </div>
 

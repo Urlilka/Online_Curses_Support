@@ -12,17 +12,22 @@ class Video_Curs_Controllers():
             curs_id = curs_id
         )
 
+    # # Получение связанных данных с курсом <--> Видео
+    # @classmethod
+    # def get_student_curs_video(cls, curs_id):
+    #     return Videos.select().join(Videos_Curses).where(Videos_Curses.curs_id == curs_id)
+
     # Получение связанных данных с курсом <--> Видео
     @classmethod
     def get_student_curs_video(cls, curs_id):
-        return Videos.select().join(Videos_Curses).where(Videos_Curses.curs_id == curs_id)
+        return Videos_Curses.select().where(Videos_Curses.curs_id == curs_id)
 
-    @classmethod
     # Удаление записи с ассоциацией Курс <---> Видео
+    @classmethod
     def delete_video_to_curs(cls, id):
         Videos_Curses.delete().where(Videos_Curses.id == id).execute()
 
 if __name__ == "__main__":
-    # Video_Curs_Controllers.add_video_to_curs(1,1)
+    # Video_Curs_Controllers.add_video_to_curs(2,1)
     for row in Video_Curs_Controllers.get_student_curs_video(1):
-        print(row.video_link)
+        print(row.video_id.video_link)

@@ -2,7 +2,11 @@ from crypt import methods
 from flask import Flask, render_template, request, url_for
 from werkzeug.utils import redirect
 from flask_login import LoginManager, login_user, login_required, current_user, logout_user
+
+from Controllers.Test_Curs_Controllers import Test_Curs_Controllers
 from Controllers.User_Controllers import User_Controller
+from Controllers.User_Curs_Controllers import User_curs_Controllers
+from Controllers.Video_Curs_Controllers import Video_Curs_Controllers
 from Models.Users import Users
 
 
@@ -66,11 +70,19 @@ def login():
 @login_required
 def student():
     if current_user.role_id.role == "Student":
-        title = f"Панель студента. Группа {Users.role_id.role}"
-
+        title = f"Панель студента. Группа {User_curs_Controllers.get_curs_from_user(current_user.id).curs_id.curs}"
+        video = Video_Curs_Controllers.get_student_curs_video(User_curs_Controllers.get_curs_from_user(current_user.id).curs_id)
+        test = Test_Curs_Controllers.get_student_curs_test(User_curs_Controllers.get_curs_from_user(current_user.id).curs_id)
+        group = User_curs_Controllers.get_curs_from_user(current_user.id).curs_id.curs
+        # for row in test:
+        #     print(row.test_id.test_link)
+        # print(group)
         return render_template(
             "stud_panel.html",
-            title = title
+            title = title,
+            video = video,
+            test = test,
+            group = group
         )
     else:
         return redirect("/logout")
@@ -83,7 +95,7 @@ def student():
 @login_required
 def certificate():
     if current_user.role_id.role == "Student":
-        title = f"Cертификаты студента. Группа {Users.role_id.role}"
+        title = f"Cертификаты студента. Группа {User_curs_Controllers.get_curs_from_user(current_user.id).curs_id.curs}"
 
         return render_template(
             "cert_panel.html",
@@ -99,7 +111,7 @@ def certificate():
 @login_required
 def recomendate():
     if current_user.role_id.role == "Student":
-        title = f"Рекомендации студента. Группа {Users.role_id.role}"
+        title = f"Рекомендации студента. Группа {User_curs_Controllers.get_curs_from_user(current_user.id).curs_id.curs}"
 
         return render_template(
             "recom_panel.html",

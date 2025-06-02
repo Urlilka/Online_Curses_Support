@@ -53,9 +53,14 @@ class User_Controller:
 if __name__ == "__main__":
     # User_Controller.registration("student","student","student_name","student_surname",2)
 
-    print(User_Controller.auth("student","student"))
+    # print(User_Controller.auth("student","student"))
 
-    for i in User_Controller.get():
-        print(i.id,i.username,i.password,i.firstname,i.surname,i.role_id.role)
+    # for i in User_Controller.get():
+    #     print(i.id,i.username,i.password,i.firstname,i.surname,i.role_id.role)
 
     # print(Users.get_or_none(Users.username == "admin").password)
+    from Controllers.Video_Curs_Controllers import *
+    from Controllers.User_Curs_Controllers import *
+    # print(Video_Curs_Controllers.get_student_curs_video(User_curs_Controllers.get_curs_from_user(7).curs_id))
+    for row in Video_Curs_Controllers.get_student_curs_video(User_curs_Controllers.get_curs_from_user(7).curs_id):
+        print("|","Промежуточная таблица id","/",row.id,"|","Таблица видео id","/",row.video_id.id,"|","Ссылка в таблице видео","/", row.video_id.video_link,"|",)

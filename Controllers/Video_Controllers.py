@@ -23,4 +23,6 @@ class Video_Controllers():
         Videos.delete().where(Videos.id == id).execute()
 
 if __name__ == "__main__":
-    Video_Controllers.add_video("https://yandex.ru")
+    # Video_Controllers.add_video("https://ya.ru")
+    for row in Video_Controllers.get_videos():
+        print(row.video_link, row.id)
