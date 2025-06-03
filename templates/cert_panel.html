@@ -6,20 +6,15 @@
 <div class="row bg-success bg-gradient p-4 m-auto text-white">
 
     <!-- Заголовок панели -->
-    <div class="col bg-header-admin m-auto fs-3 fw-semibold">
-        Панель Сертификатов
-    </div>
+    <div class="col bg-header-admin m-auto fs-3 fw-semibold">Панель Сертификатов {{name}} Группа {{ group }}</div>
 
     <!-- Кнопка Назад -->
-    <button type="button" class="btn btn-lg btn-danger col-auto justify-content-end">
-        <a href="/student_panel" class="link-light link-underline-opacity-0">Назад</a>
-    </button>
+    <a href="/student_panel" class="btn btn-lg btn-danger col-auto justify-content-end link-light link-underline-opacity-0">Назад</a>
 </div>
 
 <!-- Основной экран -->
 <div class="container text-center align-items-center py-5">
     <div class="row">
-
         <!-- Таблица с ссылками на Сертификаты пользователя -->
         <table class="table table-secondary table-hover">
             <thead>
@@ -28,13 +23,14 @@
                 </tr>
             </thead>
             <tbody class="table-group-divider">
+            {% for certs in cert %}
                 <tr class="table-secondary">
                     <td class="table-secondary">
-                        <a href="#">Шаблон</a>
+                        <a href="certs.certificate_id.cert_link">Сертификат № {{loop.index}}</a>
                     </td>
                 </tr>
+            {% endfor %}
             </tbody>
-
         </table>
     </div>
 </div>

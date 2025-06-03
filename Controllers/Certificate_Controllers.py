@@ -23,4 +23,6 @@ class Certificate_Controllers():
         Certificates.delete().where(Certificates.id == id).execute()
 
 if __name__ == "__main__":
-    Certificate_Controllers.add_certificate("https://google.com")
+    # Certificate_Controllers.add_certificate("https://sql-academy.org/")
+    for row in Certificate_Controllers.get_certificates():
+        print(row.id, row.cert_link)

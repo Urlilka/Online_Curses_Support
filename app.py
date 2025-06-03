@@ -3,6 +3,8 @@ from flask import Flask, render_template, request, url_for
 from werkzeug.utils import redirect
 from flask_login import LoginManager, login_user, login_required, current_user, logout_user
 
+from Controllers.Certificate_User_Controllers import Certificate_User_Controllers
+from Controllers.Recomendation_User_Controllers import Recomendation_User_Controllers
 from Controllers.Test_Curs_Controllers import Test_Curs_Controllers
 from Controllers.User_Controllers import User_Controller
 from Controllers.User_Curs_Controllers import User_curs_Controllers
@@ -74,6 +76,7 @@ def student():
         video = Video_Curs_Controllers.get_student_curs_video(User_curs_Controllers.get_curs_from_user(current_user.id).curs_id)
         test = Test_Curs_Controllers.get_student_curs_test(User_curs_Controllers.get_curs_from_user(current_user.id).curs_id)
         group = User_curs_Controllers.get_curs_from_user(current_user.id).curs_id.curs
+        name = User_Controller.show(current_user.id).firstname + " " + User_Controller.show(current_user.id).surname
         # for row in test:
         #     print(row.test_id.test_link)
         # print(group)
@@ -82,7 +85,8 @@ def student():
             title = title,
             video = video,
             test = test,
-            group = group
+            group = group,
+            name = name
         )
     else:
         return redirect("/logout")
@@ -96,10 +100,15 @@ def student():
 def certificate():
     if current_user.role_id.role == "Student":
         title = f"Cертификаты студента. Группа {User_curs_Controllers.get_curs_from_user(current_user.id).curs_id.curs}"
-
+        group = User_curs_Controllers.get_curs_from_user(current_user.id).curs_id.curs
+        name = User_Controller.show(current_user.id).firstname + " " + User_Controller.show(current_user.id).surname
+        cert = Certificate_User_Controllers.get_student_cert_user(current_user.id)
         return render_template(
             "cert_panel.html",
-            title = title
+            title = title,
+            name = name,
+            group = group,
+            cert = cert
         )
     else:
         return redirect("/logout")
@@ -112,10 +121,16 @@ def certificate():
 def recomendate():
     if current_user.role_id.role == "Student":
         title = f"Рекомендации студента. Группа {User_curs_Controllers.get_curs_from_user(current_user.id).curs_id.curs}"
+        group = User_curs_Controllers.get_curs_from_user(current_user.id).curs_id.curs
+        name = User_Controller.show(current_user.id).firstname + " " + User_Controller.show(current_user.id).surname
+        recom = Recomendation_User_Controllers.get_student_recom_user(current_user.id)
 
         return render_template(
             "recom_panel.html",
-            title = title
+            title = title,
+            group = group,
+            name = name,
+            recom = recom
         )
     else:
         return redirect("/logout")

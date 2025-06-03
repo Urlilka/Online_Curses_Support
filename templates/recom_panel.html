@@ -4,16 +4,10 @@
 
 <!-- Верхняя панель -->
 <div class="row bg-success bg-gradient p-4 m-auto text-white">
-
     <!-- Заголовок панели -->
-    <div class="col bg-header-admin m-auto fs-3 fw-semibold">
-        Панель Рекомендаций
-    </div>
-
+    <div class="col bg-header-admin m-auto fs-3 fw-semibold">Панель Студента {{name}} Группа {{ group }}</div>
     <!-- Кнопка Назад -->
-    <button type="button" class="btn btn-lg btn-danger col-auto justify-content-end">
-        <a href="/student_panel" class="link-light link-underline-opacity-0">Назад</a>
-    </button>
+    <a href="/student_panel" class="btn btn-lg btn-danger col-auto justify-content-end link-light link-underline-opacity-0">Назад</a>
 </div>
 
 <div class="container text-center align-items-center py-5">
@@ -21,20 +15,22 @@
 
         <!-- Аккордион --- Рекомендации пользователю -->
         <div class="accordion">
+            {% for recoms in recom %}
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <!-- В батоне создать loop число и дублировать его!!! -->
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#1" aria-expanded="True" aria-controls="1">
-                        Шаблон
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{loop.index}}" aria-expanded="True" aria-controls="{{loop.index}}">
+                        Рекомендация № {{loop.index}}
                     </button>
                 </h2>
                 <!-- Тут тоже продублировать loop число -->
-                <div id="1" class="accordion-collapse collapse">
+                <div id="{{loop.index}}" class="accordion-collapse collapse">
                     <div class="accordion-body">
-                        Шаблонный текст.
+                        {{recoms.recomendation_id.rec_text}}
                     </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
 
     </div>
