@@ -38,7 +38,7 @@
                 <tbody class="table-group-divider">
                 {% for videos in video %}
                     <tr class="table-secondary">
-                        <td class="table-secondary"><a href="{{videos.video_id.video_link}}">Видео № {{loop.index}}</a></td>
+                        <td class="table-secondary"><a class="point_1" data-id="{{loop.index}}a" href="{{videos.video_id.video_link}}">Видео № {{loop.index}}</a></td>
                     </tr>
                 {% endfor %}
                 </tbody>
@@ -55,7 +55,7 @@
                 <tbody class="table-group-divider">
                 {% for tests in test %}
                     <tr class="table-secondary">
-                        <td class="table-secondary"><a href="{{tests.test_id.test_link}}">Тест № {{loop.index}}</a></td>
+                        <td class="table-secondary"><a class="point_2" data-id="{{loop.index}}b" href="{{tests.test_id.test_link}}">Тест № {{loop.index}}</a></td>
                     </tr>
                 {% endfor %}
                 </tbody>
@@ -66,9 +66,15 @@
 
     <!--  Прогресс бар завершения курса  -->
     <div class="progress bg-dark-subtle row-auto" style="height: 20px" role="progressbar">
-        <div class="progress-bar bg-info progress-bar-striped progress-bar-animated text-black fw-semibold" style="width: 10%">10%</div>
+        <div id="progress_bar_1" class="progress-bar bg-info progress-bar-striped progress-bar-animated text-black fw-semibold" style="width: 0%">0%</div>
+    </div>
+
+    <div class="mt-3 progress bg-dark-subtle row-auto" style="height: 20px" role="progressbar">
+        <div id="progress_bar_2" class="progress-bar bg-info progress-bar-striped progress-bar-animated text-black fw-semibold" style="width: 0%">0%</div>
     </div>
 
 </div>
 
+<script src="{{url_for('static', filename='js/link_tracker_1.js')}}"></script>
+<script src="{{url_for('static', filename='js/link_tracker_2.js')}}"></script>
 {% endblock %}

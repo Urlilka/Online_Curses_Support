@@ -1,5 +1,5 @@
 from crypt import methods
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, request, url_for, jsonify
 from werkzeug.utils import redirect
 from flask_login import LoginManager, login_user, login_required, current_user, logout_user
 
@@ -90,6 +90,28 @@ def student():
         )
     else:
         return redirect("/logout")
+# ---------------------------------------------------------------------
+
+# ---------------------------------------------------------------------
+# Отслеживание ссылок видео
+@app.route("/track_link_left", methods=["POST"])
+def track_link_left():
+    data = request.get_json()
+    link_id = data["link_id"]
+    action = data["action"]
+    print(f"Клик по сылке: {link_id} | действие {action}")
+    return jsonify(success=True)
+# ---------------------------------------------------------------------
+
+# ---------------------------------------------------------------------
+# Отслеживание ссылок теста
+@app.route("/track_link_right", methods=["POST"])
+def track_link_right():
+    data = request.get_json()
+    link_id_2 = data["link_id_2"]
+    action = data["action"]
+    print(f"Клик по сылке: {link_id_2} | действие {action}")
+    return jsonify(success=True)
 # ---------------------------------------------------------------------
 
 # ---------------------------------------------------------------------
