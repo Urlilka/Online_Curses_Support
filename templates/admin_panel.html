@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Верхняя панель -->
+<div class="row bg-danger bg-gradient p-4 m-auto text-white">
+
+    <!-- Заголовок панели -->
+    <div class="col bg-header-admin m-auto fs-3 fw-semibold">Панель Администратора {{name}}</div>
+
+    <!-- --------------------------------------------------------------------- -->
+<!--    &lt;!&ndash; Группа кнопок &ndash;&gt;-->
+<!--    <div class="btn-group py-auto my-auto col-auto me-5">-->
+
+<!--        &lt;!&ndash; Кнопка "Сертификаты" &ndash;&gt;-->
+<!--        <a href="/student_panel/certifications" class="link-dark link-underline-opacity-0 btn btn-warning">Сертификаты</a>-->
+
+<!--        &lt;!&ndash; Кнопка "Рекомендации" &ndash;&gt;-->
+<!--        <a href="/student_panel/recomendations" class="link-dark link-underline-opacity-0 btn btn-warning">Рекомендации</a>-->
+<!--    </div>-->
+<!--    &lt;!&ndash; -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; &ndash;&gt;-->
+
+    <!-- Кнопка Выхода -->
+    <a href="/logout" class="link-black link-underline-opacity-0 btn btn-lg btn-warning col-auto justify-content-end">Выход</a>
+</div>
+
+<div class="container text-center align-items-center py-5">
+    <div class="row">
+        <div class="col">
+            <table class="table table-secondary table-hover">
+                <thead>
+                    <tr class="table-secondary">
+                        <th class="table-secondary" scope="col">Логин</th>
+                        <th class="table-secondary" scope="col">Имя</th>
+                        <th class="table-secondary" scope="col">Фамилия</th>
+                        <th class="table-secondary" scope="col">Роль</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for users in user %}
+                    <tr class="table-secondary">
+                        <td class="table-secondary">{{users.username}}</td>
+                        <td class="table-secondary">{{users.firstname}}</td>
+                        <td class="table-secondary">{{users.surname}}</td>
+                        <td class="table-secondary">{{users.role_id.role}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row mt-5">
+            <form method="post" action="/admin_panel" class="row d-flex justify-content-center m-auto">
+                <div class="col-auto">
+                    <label for="username_input" class="form-label">Логин</label>
+                    <input name="login" id="username_input" type="text" class="form-control">
+                </div>
+                
+                <div class="col-auto">
+                    <label for="firstname_input" class="form-label">Имя</label>
+                    <input name="firstname" id="firstname_input" type="text" class="form-control">
+                </div>
+                
+                <div class="col-auto">
+                    <label for="surname_input" class="form-label">Фамилия</label>
+                    <input name="surname" id="surname_input" type="text" class="form-control">
+                </div>
+                
+                <div class="col-auto">
+                    <label for="password_input" class="form-label">Пароль</label>
+                    <input name="password" id="password_input" type="password" class="form-control">
+                </div>
+
+                <select name="role" class="form-select mt-3 w-50 form-select-sm row-auto">
+                    <option selected>Выберите роль</option>
+                    <option value= "2">Студент</option>
+                    <option value= "1">Админ</option>
+                </select>
+
+                <div class="row mt-4 m-auto">
+                    <button class="m-auto btn btn-primary" type="submit">Создать</button>
+                </div>
+            </form>
+    </div>
+</div>
+
+
+{% endblock %}

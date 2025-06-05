@@ -158,6 +158,40 @@ def recomendate():
         return redirect("/logout")
 # ---------------------------------------------------------------------
 
+# Админ панель
+# ---------------------------------------------------------------------
+@app.route("/admin_panel", methods=["POST","GET"])
+@login_required
+def admin_panel():
+    if current_user.role_id.role == "Admin":
+        title = "Админ панель"
+        name = User_Controller.show(current_user.id).firstname
+        user = User_Controller.get()
+        if request.method =="POST":
+            login = request.form.get("login")
+            firstname = request.form.get("firstname")
+            surname = request.form.get("surname")
+            password = request.form.get("password")
+            role = request.form.get("role")
+
+            User_Controller.registration(
+                username=login,
+                password=password,
+                firstname=firstname,
+                surname=surname,
+                role_id=role
+            )
+            return redirect("/admin_panel")
+        return render_template(
+            "admin_panel.html",
+            title = title,
+            name = name,
+            user = user
+        )
+
+# ---------------------------------------------------------------------
+
+
 # ---------------------------------------------------------------------
 # Запуск переменной app и веб-сервера
 if __name__ == "__main__":
