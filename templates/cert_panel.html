@@ -26,7 +26,7 @@
             {% for certs in cert %}
                 <tr class="table-secondary">
                     <td class="table-secondary">
-                        <a href="certs.certificate_id.cert_link">Сертификат № {{loop.index}}</a>
+                        <a href="{{certs.certificate_id.cert_link}}">Сертификат № {{loop.index}}</a>
                     </td>
                 </tr>
             {% endfor %}
